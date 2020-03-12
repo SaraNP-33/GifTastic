@@ -1,0 +1,35 @@
+body{
+  background-image: url("../images/giphy.gif");
+}
+
+header{
+    background-color: #000000;
+    border-bottom:3px solid blueviolet;
+    padding:10px;
+    height:90px;
+    font-family: "Luckiest Guy", cursive;
+    font-size: 400%;
+    font-weight: bold;
+    color:blueviolet;
+    text-shadow: 2px 0 #ffffff, 1px 0 #ffffff;
+    text-align: center;
+}
+
+.navbar{
+    padding:10px;
+    margin-bottom: 20px;
+}
+
+#search-btn{
+    color:blueviolet;
+    border:2px solid blueviolet;
+    font-family: "Oxanium", cursive;
+}
+#button-view{
+    background-color:lavenderblush ;
+    border: 2px solid lavender;
+    color:black;
+    font-family: "Oxanium", cursive;
+    
+    
+}
