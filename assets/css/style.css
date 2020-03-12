@@ -25,3 +25,13 @@ header{
     border:2px solid blueviolet;
     font-family: "Oxanium", cursive;
 }
+button{
+    background-color:lavenderblush ;
+    border: 2px solid lavender;
+    color:black;
+    font-family: "Oxanium", cursive;
+   padding:10px;
+   margin-left: 10px;
+   border-radius: 5px;
+    }
+    
