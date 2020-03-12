@@ -61,5 +61,22 @@ function ShowButtons(){
         newButton.attr("data-name", gifs[i]);
 
         newButton.text(gifs[i]);
+
+        $("#button-view").append(newButton);
+    
     }
 }
+
+$("#search-btn").on("click", function(event){
+    event.preventDefault();
+
+    var newgif = $("#search-input").val().trim();
+
+    gifs.push(newgif);
+
+    ShowButtons();
+})
+
+$(document).on("click", ".gif-btn", displayGifInfo);
+
+ShowButtons();
