@@ -23,11 +23,17 @@ function displayGifInfo() {
 
 //storing the image path and data;
 
-        var imageUrl = response.data[i].images.fixed_height.url;
+        var imageAnim = response.data[i].images.fixed_height.url;
+        var imageStill= response.data[i].images.fixed_height_still.url;
 
-        //give the url an image attribute in the html
+        //give the url an image attribute in the html - add the still and animated attr as well
 
-        var image = $("<img>").attr("src", imageUrl);
+        var image = $("<img class= 'gif'>");
+        image.attr("src", imageStill);
+        image.attr("data-state", "still")
+        image.attr("data-still", imageStill);
+        image.attr("data-animated", imageAnim);
+      
 
         //append that new img attribute with the data to the new Div
 
@@ -49,6 +55,7 @@ function displayGifInfo() {
 
         $("#gif-view").prepend(GifDiv);
     }
+
 
       });
 };
@@ -79,6 +86,24 @@ $("#search-btn").on("click", function(event){
     ShowButtons();
 })
 
-$(document).on("click", ".gif-btn", displayGifInfo);
+$(document).on("click", ".gif-btn", displayGifInfo)
+ 
+$(".gif").on("click", function(displayGifInfo){
+    var state = $(this).attr("data-state");
+displayGifInfo();
+    if(state === "still"){
+   $(this).attr("src", $(this).attr("data-animate"));
+   $(this).attr("data-state", "animate");
+ 
+     } else{
+   $(this).attr("src", $(this).attr("data-still"));
+   $(this).attr("data-state", "still");
+   
+     }    
+
+
+});
+
+
 
 ShowButtons();
