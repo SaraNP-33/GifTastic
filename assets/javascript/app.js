@@ -7,8 +7,7 @@ console.log(gifs);
 
 function displayGifInfo() {
     var gif = $ (this).attr("data-name");
-    var APIKey = "jElcC4ePU4jqFQ0rAN841qASEfZJ9BGt"
-    var queryURL = "http://api.giphy.com/v1/gifs/search?"+ APIKey+ "&q=" + gif;
+    var queryURL = "http://api.giphy.com/v1/gifs/search?api_key=jElcC4ePU4jqFQ0rAN841qASEfZJ9BGt&q=" + gif;
 
     // the function to call the APi through AJAX
     $.ajax({
@@ -17,12 +16,14 @@ function displayGifInfo() {
       }).then(function(response) {
 
 //create a div for the incoming searched gifs
+        for (var i=0; i<response.data.length; i++){
 
+       
         var GifDiv = $("<div class = 'gif'>");
 
 //storing the image path and data;
 
-        var imageUrl = response.data.url;
+        var imageUrl = response.data[i].images.fixed_height.url;
 
         //give the url an image attribute in the html
 
@@ -35,7 +36,7 @@ function displayGifInfo() {
         //repeat the same steps for the rating. Main difference we are creating a paragraph on the html
         //not an image attr.
 
-        var rating = response.data.rating;
+        var rating = response.data[i].rating;
         console.log(rating);
 
         var pOne = $("<p>").text("Rating:"+ " "+ rating);
@@ -47,6 +48,7 @@ function displayGifInfo() {
         //not the bottom. 
 
         $("#gif-view").prepend(GifDiv);
+    }
 
       });
 };
