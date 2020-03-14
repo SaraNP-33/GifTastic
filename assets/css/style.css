@@ -1,5 +1,6 @@
 body{
   background-image: url("../images/giphy.gif");
+ 
 }
 
 header{
@@ -41,8 +42,11 @@ button{
         margin:20px;
     }
    
-    
-  #gif-view{
-      color:white;  
-  }
- 
+    #gif-view div{
+        color:white;
+        float: left;
+        width: 33.33%;
+        padding: 5px;
+    }
+
+  
