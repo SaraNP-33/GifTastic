@@ -1,4 +1,6 @@
 // start with the array of gifs
+$(document).ready(function(){
+
 
 var gifs = ["cat", "sloth","Sheldon","Rebel Wilson", "coding", "dolphin","unicorn"];
 console.log(gifs);
@@ -19,7 +21,7 @@ function displayGifInfo() {
         for (var i=0; i<response.data.length; i++){
 
        
-        var GifDiv = $("<div class = 'gif'>");
+        var GifDiv = $("<div>");
 
 //storing the image path and data;
 
@@ -28,11 +30,11 @@ function displayGifInfo() {
 
         //give the url an image attribute in the html - add the still and animated attr as well
 
-        var image = $("<img class= 'gif'>");
+        var image = $("<img class='gif'>");
         image.attr("src", imageStill);
         image.attr("data-state", "still")
         image.attr("data-still", imageStill);
-        image.attr("data-animated", imageAnim);
+        image.attr("data-animate", imageAnim);
       
 
         //append that new img attribute with the data to the new Div
@@ -88,18 +90,20 @@ $("#search-btn").on("click", function(event){
 
 $(document).on("click", ".gif-btn", displayGifInfo)
  
-$(".gif").on("click", function(displayGifInfo){
+$(Image).on("click", function(){
+
     var state = $(this).attr("data-state");
-displayGifInfo();
+
     if(state === "still"){
    $(this).attr("src", $(this).attr("data-animate"));
    $(this).attr("data-state", "animate");
  
      } else{
    $(this).attr("src", $(this).attr("data-still"));
-   $(this).attr("data-state", "still");
+   $(this).attr("data-state", "still"); 
    
-     }    
+     } 
+     console.log("click")
 
 
 });
@@ -107,3 +111,4 @@ displayGifInfo();
 
 
 ShowButtons();
+});
