@@ -9,7 +9,7 @@ $(document).ready(function () {
 
     function displayGifInfo() {
         var gif = $(this).attr("data-name");
-        var queryURL = "http://api.giphy.com/v1/gifs/search?api_key=jElcC4ePU4jqFQ0rAN841qASEfZJ9BGt&q=" + gif;
+        var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=jElcC4ePU4jqFQ0rAN841qASEfZJ9BGt&q=" + gif;
 
         // the function to call the APi through AJAX
         $.ajax({
