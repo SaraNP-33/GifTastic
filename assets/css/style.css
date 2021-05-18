@@ -5,14 +5,14 @@ body{
 
 header{
     background-color: #000000;
-    border-bottom:3px solid blueviolet;
+    border-bottom:3px solid #ff47a6;
     padding:10px;
     height:90px;
     font-family: "Luckiest Guy", cursive;
     font-size: 400%;
     font-weight: bold;
-    color:blueviolet;
-    text-shadow: 2px 0 #ffffff, 1px 0 #ffffff;
+    color:#ff47a6;
+    text-shadow: 3px 0 #ffffff, 1px 0 #ffffff;
     text-align: center;
 }
 
@@ -23,30 +23,41 @@ header{
 
 #search-btn{
     color:blueviolet;
-    border:2px solid blueviolet;
+    border:2px solid #ffcfc2;
     font-family: "Oxanium", cursive;
 }
-button{
-    background-color:lavenderblush ;
-    border: 2px solid lavender;
+button:hover{
+    background-color:#ffcfc2 !important;
+}
+#button-view{
+   display:flex;
+   justify-content: center;
+}
+.gif-btn{
+    background-color:#47a6ff  ;
+    border: 2px solid #47a6ff;
     color:black;
     font-family: "Oxanium", cursive;
    padding:10px;
    margin-left: 10px;
    border-radius: 5px;
+   
     }
 
     .container{
+        display: flex;
+        justify-content: center;
         box-sizing: border-box;
-        padding:20px;
-        margin:20px;
+        /* padding:20px;
+        margin:20px; */
     }
    
     #gif-view div{
         color:white;
         float: left;
-        width: 33%;
-        padding: 5px;
+        width: 22vw;
+        margin-left: 5px;
+        padding-top:10vh;
     }
 
   

@@ -21,7 +21,7 @@ $(document).ready(function () {
             for (var i = 0; i < response.data.length; i++) {
 
 
-                var GifDiv = $("<div>");
+                var GifDiv = $("<div class='gifContainer'>");
 
                 //storing the image path and data;
 
