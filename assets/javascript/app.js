@@ -24,17 +24,89 @@ $(document).ready(function () {
                 var imageAnim = response.data[i].images.fixed_height.url;
                 var imageStill = response.data[i].images.fixed_height_still.url;
 
+          // create html structure dynamically that will
+          //display the gifs      
           gifDiv +=`<div class='gifContainer'>
-          <img src='${imageStill} data-state='still' data-still='${imageStill} data-animate='${imageAnim}>
+          <img  class="gif" src=${imageStill} data-state='still' data-still=${imageStill} data-animate=${imageAnim}>
           <p> Rating:  ${rating}</p>
           </div>`
         
-
+        //use prepend so that the new search appears on top
           $("#gif-view").prepend(gifDiv);
 
+          $(".gif").on("click", function () {
+            console.log("clicking on gif");
+            
+            var state = $(this).attr("data-state");
+    
+            if (state === "still") {
+                $(this).attr("src", $(this).attr("data-animate"));
+                $(this).attr("data-state", "animate");
+    
+            } else {
+                $(this).attr("src", $(this).attr("data-still"));
+                $(this).attr("data-state", "still");
+    
+            }
+            console.log("click")
+    
+        });
+                  
+            }
+
+        });
+    };
+
+    function ShowButtons() {
+        $("#button-view").empty();
+
+        for (var i = 0; i < gifs.length; i++) {
+
+            var newButton = $("<button class = 'gif-btn'>");
+
+            newButton.attr("data-name", gifs[i]);
+
+            newButton.text(gifs[i]);
+
+            $("#button-view").append(newButton);
+
+        }
+    }
+
+    $("#search-btn").on("click", function (event) {
+        event.preventDefault();
+
+        var newgif = $("#search-input").val().trim();
+
+        gifs.push(newgif);
+
+        ShowButtons();
+    })
+
+    $(document).on("click", ".gif-btn", displayGifInfo)
+  
+
+    ShowButtons();
+});
 
 
-            //  //,making container to hold the gifs
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//  //,making container to hold the gifs
             //      var gifDiv = $("<div class='gifContainer'>")
 
             //     var image = $("<img class='gif'>");
@@ -70,63 +142,3 @@ $(document).ready(function () {
                 //once all the new divs are created, prepend it on the original div created in the html
                 //the prepend will allow for the new gifs to be added to the top of the container
                 //not the bottom. 
-
-                
-
-                $(".gif").on("click", function () {
-
-                    var state = $(this).attr("data-state");
-
-                    if (state === "still") {
-                        $(this).attr("src", $(this).attr("data-animate"));
-                        $(this).attr("data-state", "animate");
-
-                    } else {
-                        $(this).attr("src", $(this).attr("data-still"));
-                        $(this).attr("data-state", "still");
-
-                    }
-                    console.log("click")
-
-
-                });
-
-            }
-
-
-        });
-    };
-
-    function ShowButtons() {
-        $("#button-view").empty();
-
-        for (var i = 0; i < gifs.length; i++) {
-
-            var newButton = $("<button class = 'gif-btn'>");
-
-            newButton.attr("data-name", gifs[i]);
-
-            newButton.text(gifs[i]);
-
-            $("#button-view").append(newButton);
-
-        }
-    }
-
-    $("#search-btn").on("click", function (event) {
-        event.preventDefault();
-
-        var newgif = $("#search-input").val().trim();
-
-        gifs.push(newgif);
-
-        ShowButtons();
-    })
-
-    $(document).on("click", ".gif-btn", displayGifInfo)
-
-
-
-
-    ShowButtons();
-});
