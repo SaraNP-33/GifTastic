@@ -16,46 +16,62 @@ $(document).ready(function () {
             url: queryURL,
             method: "GET"
         }).then(function (response) {
-
+            var gifDiv = " "
             //create a div for the incoming searched gifs
-            for (var i = 0; i < response.data.length; i++) {
-
-
-                var GifDiv = $("<div class='gifContainer'>");
-
-                //storing the image path and data;
-
+            for (var i = 0; i < response.data.length; i++) {    //grabbing info from query
+                var rating = response.data[i].rating;
+                console.log(rating); 
                 var imageAnim = response.data[i].images.fixed_height.url;
                 var imageStill = response.data[i].images.fixed_height_still.url;
 
+          gifDiv +=`<div class='gifContainer'>
+          <img src='${imageStill} data-state='still' data-still='${imageStill} data-animate='${imageAnim}>
+          <p> Rating:  ${rating}</p>
+          </div>`
+        
+
+          $("#gif-view").prepend(gifDiv);
+
+
+
+            //  //,making container to hold the gifs
+            //      var gifDiv = $("<div class='gifContainer'>")
+
+            //     var image = $("<img class='gif'>");
+            //     image.attr("src", imageStill);
+            //     image.attr("data-state", "still")
+            //     image.attr("data-still", imageStill);
+            //     image.attr("data-animate", imageAnim);     var pOne = $("<p>").text("Rating:" + " " + rating); 
+                  
+                
+            //     gifDiv.append(image);
+            //     //storing the image path and data;
+
+                
+
+            //     gifDiv.append(pOne);
+               
+
                 //give the url an image attribute in the html - add the still and animated attr as well
 
-                var image = $("<img class='gif'>");
-                image.attr("src", imageStill);
-                image.attr("data-state", "still")
-                image.attr("data-still", imageStill);
-                image.attr("data-animate", imageAnim);
+                
 
 
                 //append that new img attribute with the data to the new Div
 
-                GifDiv.append(image);
+              
 
                 //repeat the same steps for the rating. Main difference we are creating a paragraph on the html
                 //not an image attr.
 
-                var rating = response.data[i].rating;
-                console.log(rating);
+                
 
-                var pOne = $("<p>").text("Rating:" + " " + rating);
-
-                GifDiv.append(pOne);
 
                 //once all the new divs are created, prepend it on the original div created in the html
                 //the prepend will allow for the new gifs to be added to the top of the container
                 //not the bottom. 
 
-                $("#gif-view").prepend(GifDiv);
+                
 
                 $(".gif").on("click", function () {
 
